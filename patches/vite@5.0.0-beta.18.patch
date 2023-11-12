@@ -1,5 +1,5 @@
 diff --git a/dist/node/chunks/dep-pW7U7Lse.js b/dist/node/chunks/dep-pW7U7Lse.js
-index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af0928c054338 100644
+index a890c882e84fe91c2989c9a07a38cf104b40eb52..9cfecc2b6bb0b1b14bed5f5d9a902ceb0f0faa71 100644
 --- a/dist/node/chunks/dep-pW7U7Lse.js
 +++ b/dist/node/chunks/dep-pW7U7Lse.js
 @@ -667,7 +667,7 @@ var constants$6 = {
@@ -71,7 +71,23 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  	} (browser$3, browser$3.exports));
  	return browser$3.exports;
  }
-@@ -15704,7 +15704,7 @@ async function urlToBuiltUrl(url, importer, config, pluginContext) {
+@@ -12447,13 +12447,14 @@ function optimizeSafeRealPathSync() {
+         }
+     });
+ }
+-function ensureWatchedFile(watcher, file, root) {
++function ensureWatchedFile(watcher, file, root, log = false) {
+     if (file &&
+         // only need to watch if out of root
+         !file.startsWith(withTrailingSlash(root)) &&
+         // some rollup plugins use null bytes for private resolved Ids
+         !file.includes('\0') &&
+         fs$l.existsSync(file)) {
++        if (log) console.log('add', file, path$o.resolve(file))
+         // resolve file to normalized system path
+         watcher.add(path$o.resolve(file));
+     }
+@@ -15704,7 +15705,7 @@ async function urlToBuiltUrl(url, importer, config, pluginContext) {
      const file = url[0] === '/'
          ? path$o.join(config.root, url)
          : path$o.join(path$o.dirname(importer), url);
@@ -80,7 +96,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
      // skip public check since we just did it above
      true);
  }
-@@ -16148,7 +16148,7 @@ var convertSourceMap$1 = {};
+@@ -16148,7 +16149,7 @@ var convertSourceMap$1 = {};
  	exports.generateMapFileComment = function (file, options) {
  	  var data = 'sourceMappingURL=' + file;
  	  return options && options.multiline ? '/*# ' + data + ' */' : '//# ' + data;
@@ -89,7 +105,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  } (convertSourceMap$1));
  
  var convertSourceMap = /*@__PURE__*/getDefaultExportFromCjs(convertSourceMap$1);
-@@ -16694,7 +16694,7 @@ var utils$f = {};
+@@ -16694,7 +16695,7 @@ var utils$f = {};
  	  };
  	  flat(args);
  	  return result;
@@ -98,7 +114,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  } (utils$f));
  
  const utils$e = utils$f;
-@@ -19059,7 +19059,7 @@ var fs$f = {};
+@@ -19059,7 +19060,7 @@ var fs$f = {};
  	    }
  	    return Object.assign(Object.assign({}, exports.FILE_SYSTEM_ADAPTER), fsMethods);
  	}
@@ -107,7 +123,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  } (fs$f));
  
  Object.defineProperty(settings$3, "__esModule", { value: true });
-@@ -19412,7 +19412,7 @@ var fs$b = {};
+@@ -19412,7 +19413,7 @@ var fs$b = {};
  	    }
  	    return Object.assign(Object.assign({}, exports.FILE_SYSTEM_ADAPTER), fsMethods);
  	}
@@ -116,7 +132,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  } (fs$b));
  
  Object.defineProperty(settings$2, "__esModule", { value: true });
-@@ -20755,7 +20755,7 @@ var settings = {};
+@@ -20755,7 +20756,7 @@ var settings = {};
  	        return Object.assign(Object.assign({}, exports.DEFAULT_FILE_SYSTEM_ADAPTER), methods);
  	    }
  	}
@@ -125,7 +141,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  } (settings));
  
  const taskManager = tasks;
-@@ -28513,7 +28513,7 @@ var dist = {};
+@@ -28513,7 +28514,7 @@ var dist = {};
  	        },
  	    };
  	}
@@ -134,7 +150,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  } (dist));
  
  const ALIAS = Symbol.for('yaml.alias');
-@@ -31723,7 +31723,7 @@ class Document {
+@@ -31723,7 +31724,7 @@ class Document {
              replacer = undefined;
          }
          const { aliasDuplicateObjects, anchorPrefix, flow, keepUndefined, onTagObj, tag } = options ?? {};
@@ -143,7 +159,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
          // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
          anchorPrefix || 'a');
          const ctx = {
-@@ -37811,7 +37811,7 @@ function cssPlugin(config) {
+@@ -37811,7 +37812,7 @@ function cssPlugin(config) {
                                  ? moduleGraph.createFileOnlyEntry(file)
                                  : await moduleGraph.ensureEntryFromUrl(stripBase(await fileToUrl$1(file, config, this), (config.server?.origin ?? '') + devBase), ssr));
                          }
@@ -152,7 +168,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
                          // The root CSS proxy module is self-accepting and should not
                          // have an explicit accept list
                          new Set(), null, isSelfAccepting, ssr);
-@@ -38195,7 +38195,7 @@ function getEmptyChunkReplacer(pureCssChunkNames, outputFormat) {
+@@ -38195,7 +38196,7 @@ function getEmptyChunkReplacer(pureCssChunkNames, outputFormat) {
      const emptyChunkRE = new RegExp(outputFormat === 'es'
          ? `\\bimport\\s*["'][^"']*(?:${emptyChunkFiles})["'];`
          : `(\\b|,\\s*)require\\(\\s*["'][^"']*(?:${emptyChunkFiles})["']\\)(;|,)`, 'g');
@@ -161,7 +177,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
      // remove css import while preserving source map location
      (m) => outputFormat === 'es'
          ? `/* empty css ${''.padEnd(m.length - 15)}*/`
-@@ -39617,13 +39617,13 @@ function createIsConfiguredAsSsrExternal(config) {
+@@ -39617,13 +39618,13 @@ function createIsConfiguredAsSsrExternal(config) {
              return false;
          }
          try {
@@ -178,7 +194,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
              // Allow linked packages to be externalized if they are explicitly
              // configured as external
              !!configuredAsExternal)?.external;
-@@ -40939,7 +40939,7 @@ function requireDebug () {
+@@ -40939,7 +40940,7 @@ function requireDebug () {
  		function coerce(val) {
  		  if (val instanceof Error) return val.stack || val.message;
  		  return val;
@@ -187,7 +203,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  	} (debug$c, debug$c.exports));
  	return debug$c.exports;
  }
-@@ -41197,7 +41197,7 @@ function requireNode () {
+@@ -41197,7 +41198,7 @@ function requireNode () {
  		 * Enable namespaces listed in `process.env.DEBUG` initially.
  		 */
  
@@ -196,7 +212,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  	} (node, node.exports));
  	return node.exports;
  }
-@@ -41394,7 +41394,7 @@ function requireBrowser () {
+@@ -41394,7 +41395,7 @@ function requireBrowser () {
  		  try {
  		    return window.localStorage;
  		  } catch (e) {}
@@ -205,7 +221,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  	} (browser, browser.exports));
  	return browser.exports;
  }
-@@ -42604,7 +42604,7 @@ var utilsMerge = {exports: {}};
+@@ -42604,7 +42605,7 @@ var utilsMerge = {exports: {}};
  	    }
  	  }
  	  return a;
@@ -214,7 +230,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  } (utilsMerge));
  
  var utilsMergeExports = utilsMerge.exports;
-@@ -44141,7 +44141,7 @@ var constants$1 = {};
+@@ -44141,7 +44142,7 @@ var constants$1 = {};
  	exports.isWindows = platform === 'win32';
  	exports.isMacos = platform === 'darwin';
  	exports.isLinux = platform === 'linux';
@@ -223,7 +239,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  } (constants$1));
  
  const fs$7 = require$$0__default;
-@@ -45092,7 +45092,7 @@ _watchWithFsEvents(watchPath, realPath, transform, globFilter) {
+@@ -45092,7 +45093,7 @@ _watchWithFsEvents(watchPath, realPath, transform, globFilter) {
    if (this.fsw.closed || this.fsw._isIgnored(watchPath)) return;
    const opts = this.fsw.options;
    const watchCallback = async (fullPath, flags, info) => {
@@ -232,7 +248,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
      if (this.fsw.closed || this.fsw._isIgnored(fullPath)) return;
      if (
        opts.depth !== undefined &&
-@@ -45772,6 +45772,9 @@ add(paths_, _origAdd, _internal) {
+@@ -45772,6 +45773,9 @@ add(paths_, _origAdd, _internal) {
        results.filter(item => item).forEach(item => {
          this.add(sysPath.dirname(item), sysPath.basename(_origAdd || item));
        });
@@ -242,7 +258,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
      });
    }
  
-@@ -46985,7 +46988,7 @@ async function resolveHttpServer({ proxy }, app, httpsOptions) {
+@@ -46985,7 +46989,7 @@ async function resolveHttpServer({ proxy }, app, httpsOptions) {
              maxSessionMemory: 1000,
              ...httpsOptions,
              allowHTTP1: true,
@@ -251,7 +267,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
          // @ts-expect-error TODO: is this correct?
          app);
      }
-@@ -55324,7 +55327,7 @@ var eventemitter3 = {exports: {}};
+@@ -55324,7 +55328,7 @@ var eventemitter3 = {exports: {}};
  	//
  	{
  	  module.exports = EventEmitter;
@@ -260,7 +276,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  } (eventemitter3));
  
  var eventemitter3Exports = eventemitter3.exports;
-@@ -55420,7 +55423,7 @@ var requiresPort = function required(port, protocol) {
+@@ -55420,7 +55424,7 @@ var requiresPort = function required(port, protocol) {
  	  if (options.auth) {
  	    outgoing.auth = options.auth;
  	  }
@@ -269,7 +285,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  	  if (options.ca) {
  	      outgoing.ca = options.ca;
  	  }
-@@ -56922,7 +56925,7 @@ var wsIncoming = {
+@@ -56922,7 +56926,7 @@ var wsIncoming = {
  	  if(i === false) throw new Error('No such pass');
  
  	  passes.splice(i++, 0, callback);
@@ -278,7 +294,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
  } (httpProxy$3));
  
  var httpProxyExports = httpProxy$3.exports;
-@@ -56996,12 +56999,12 @@ var httpProxy$2 = ProxyServer;
+@@ -56996,12 +57000,12 @@ var httpProxy$2 = ProxyServer;
  /*!
   * Caron dimonio, con occhi di bragia
   * loro accennando, tutte le raccoglie;
@@ -293,7 +309,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
   *          Dante - The Divine Comedy (Canto III)
   */
  
-@@ -57827,7 +57830,7 @@ class ModuleGraph {
+@@ -57827,7 +57831,7 @@ class ModuleGraph {
              });
          }
      }
@@ -302,7 +318,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
      /** @internal */
      softInvalidate = false) {
          const prevInvalidationState = mod.invalidationState;
-@@ -57892,7 +57895,7 @@ class ModuleGraph {
+@@ -57892,7 +57896,7 @@ class ModuleGraph {
       * @param staticImportedUrls Subset of `importedModules` where they're statically imported in code.
       *   This is only used for soft invalidations so `undefined` is fine but may cause more runtime processing.
       */
@@ -311,7 +327,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
      /** @internal */
      staticImportedUrls) {
          mod.isSelfAccepting = isSelfAccepting;
-@@ -57966,7 +57969,7 @@ class ModuleGraph {
+@@ -57966,7 +57970,7 @@ class ModuleGraph {
      /**
       * @internal
       */
@@ -320,7 +336,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
      // Optimization, avoid resolving the same url twice if the caller already did it
      resolved) {
          // Quick path, if we already have a module for this rawUrl (even without extension)
-@@ -59659,7 +59662,7 @@ function webWorkerPlugin(config) {
+@@ -59659,7 +59663,7 @@ function webWorkerPlugin(config) {
                  if (query.inline != null) {
                      const chunk = await bundleWorkerEntry(config, id, query);
                      const encodedJs = `const encodedJs = "${Buffer.from(chunk.code).toString('base64')}";`;
@@ -329,7 +345,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
                      // Using blob URL for SharedWorker results in multiple instances of a same worker
                      workerConstructor === 'Worker'
                          ? `${encodedJs}
-@@ -60848,7 +60851,7 @@ function workerImportMetaUrlPlugin(config) {
+@@ -60848,7 +60852,7 @@ function workerImportMetaUrlPlugin(config) {
                          builtUrl = injectQuery(builtUrl, WORKER_FILE_ID);
                          builtUrl = injectQuery(builtUrl, `type=${workerType}`);
                      }
@@ -338,7 +354,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
                      // add `'' +` to skip vite:asset-import-meta-url plugin
                      `new URL('' + ${JSON.stringify(builtUrl)}, import.meta.url)`);
                  }
-@@ -61684,7 +61687,7 @@ async function createPluginContainer(config, moduleGraph, watcher) {
+@@ -61684,7 +61688,7 @@ async function createPluginContainer(config, moduleGraph, watcher) {
                      errLocation = numberToPos(ctx._activeCode, pos);
                  }
                  catch (err2) {
@@ -347,14 +363,12 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..f519f412688e885f11b49ff41f8af092
                      // print extra newline to separate the two errors
                      { error: err2 });
                      throw err;
-@@ -61936,8 +61939,9 @@ async function createPluginContainer(config, moduleGraph, watcher) {
-                 }
+@@ -61937,7 +61941,7 @@ async function createPluginContainer(config, moduleGraph, watcher) {
              }
              watchFiles.add(id);
-+            console.log('add', id)
              if (watcher)
 -                ensureWatchedFile(watcher, id, root);
-+              ensureWatchedFile(watcher, id, root);
++              ensureWatchedFile(watcher, id, root, true);
              return null;
          },
          async transform(code, id, options) {
