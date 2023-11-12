@@ -1,5 +1,5 @@
 diff --git a/dist/node/chunks/dep-pW7U7Lse.js b/dist/node/chunks/dep-pW7U7Lse.js
-index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43d2603499 100644
+index a890c882e84fe91c2989c9a07a38cf104b40eb52..94a82ede416320f8cc6789105381048de7b7e462 100644
 --- a/dist/node/chunks/dep-pW7U7Lse.js
 +++ b/dist/node/chunks/dep-pW7U7Lse.js
 @@ -667,7 +667,7 @@ var constants$6 = {
@@ -241,7 +241,15 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
          // @ts-expect-error TODO: is this correct?
          app);
      }
-@@ -55324,7 +55324,7 @@ var eventemitter3 = {exports: {}};
+@@ -47726,6 +47726,7 @@ async function loadAndTransform(id, url, server, options, timestamp, mod, resolv
+                     throw e;
+                 }
+             }
++            ensureWatchedFile(server.watcher, file, config.root)
+         }
+         if (code) {
+             try {
+@@ -55324,7 +55325,7 @@ var eventemitter3 = {exports: {}};
  	//
  	{
  	  module.exports = EventEmitter;
@@ -250,7 +258,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
  } (eventemitter3));
  
  var eventemitter3Exports = eventemitter3.exports;
-@@ -55420,7 +55420,7 @@ var requiresPort = function required(port, protocol) {
+@@ -55420,7 +55421,7 @@ var requiresPort = function required(port, protocol) {
  	  if (options.auth) {
  	    outgoing.auth = options.auth;
  	  }
@@ -259,7 +267,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
  	  if (options.ca) {
  	      outgoing.ca = options.ca;
  	  }
-@@ -56922,7 +56922,7 @@ var wsIncoming = {
+@@ -56922,7 +56923,7 @@ var wsIncoming = {
  	  if(i === false) throw new Error('No such pass');
  
  	  passes.splice(i++, 0, callback);
@@ -268,7 +276,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
  } (httpProxy$3));
  
  var httpProxyExports = httpProxy$3.exports;
-@@ -56996,12 +56996,12 @@ var httpProxy$2 = ProxyServer;
+@@ -56996,12 +56997,12 @@ var httpProxy$2 = ProxyServer;
  /*!
   * Caron dimonio, con occhi di bragia
   * loro accennando, tutte le raccoglie;
@@ -283,7 +291,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
   *          Dante - The Divine Comedy (Canto III)
   */
  
-@@ -57827,7 +57827,7 @@ class ModuleGraph {
+@@ -57827,7 +57828,7 @@ class ModuleGraph {
              });
          }
      }
@@ -292,7 +300,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
      /** @internal */
      softInvalidate = false) {
          const prevInvalidationState = mod.invalidationState;
-@@ -57892,7 +57892,7 @@ class ModuleGraph {
+@@ -57892,7 +57893,7 @@ class ModuleGraph {
       * @param staticImportedUrls Subset of `importedModules` where they're statically imported in code.
       *   This is only used for soft invalidations so `undefined` is fine but may cause more runtime processing.
       */
@@ -301,7 +309,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
      /** @internal */
      staticImportedUrls) {
          mod.isSelfAccepting = isSelfAccepting;
-@@ -57966,7 +57966,7 @@ class ModuleGraph {
+@@ -57966,7 +57967,7 @@ class ModuleGraph {
      /**
       * @internal
       */
@@ -310,7 +318,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
      // Optimization, avoid resolving the same url twice if the caller already did it
      resolved) {
          // Quick path, if we already have a module for this rawUrl (even without extension)
-@@ -59659,7 +59659,7 @@ function webWorkerPlugin(config) {
+@@ -59659,7 +59660,7 @@ function webWorkerPlugin(config) {
                  if (query.inline != null) {
                      const chunk = await bundleWorkerEntry(config, id, query);
                      const encodedJs = `const encodedJs = "${Buffer.from(chunk.code).toString('base64')}";`;
@@ -319,7 +327,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
                      // Using blob URL for SharedWorker results in multiple instances of a same worker
                      workerConstructor === 'Worker'
                          ? `${encodedJs}
-@@ -60848,7 +60848,7 @@ function workerImportMetaUrlPlugin(config) {
+@@ -60848,7 +60849,7 @@ function workerImportMetaUrlPlugin(config) {
                          builtUrl = injectQuery(builtUrl, WORKER_FILE_ID);
                          builtUrl = injectQuery(builtUrl, `type=${workerType}`);
                      }
@@ -328,7 +336,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
                      // add `'' +` to skip vite:asset-import-meta-url plugin
                      `new URL('' + ${JSON.stringify(builtUrl)}, import.meta.url)`);
                  }
-@@ -61684,7 +61684,7 @@ async function createPluginContainer(config, moduleGraph, watcher) {
+@@ -61684,7 +61685,7 @@ async function createPluginContainer(config, moduleGraph, watcher) {
                      errLocation = numberToPos(ctx._activeCode, pos);
                  }
                  catch (err2) {
@@ -337,24 +345,17 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
                      // print extra newline to separate the two errors
                      { error: err2 });
                      throw err;
-@@ -61935,9 +61935,13 @@ async function createPluginContainer(config, moduleGraph, watcher) {
+@@ -61935,9 +61936,6 @@ async function createPluginContainer(config, moduleGraph, watcher) {
                      return result;
                  }
              }
 -            watchFiles.add(id);
 -            if (watcher)
 -                ensureWatchedFile(watcher, id, root);
-+            if (id === '/home') {
-+              console.trace('home');
-+            } else {
-+              watchFiles.add(id);
-+              if (watcher)
-+                ensureWatchedFile(watcher, id, root, true);
-+            }
              return null;
          },
          async transform(code, id, options) {
-@@ -64558,7 +64562,7 @@ function buildImportAnalysisPlugin(config) {
+@@ -64558,7 +64556,7 @@ function buildImportAnalysisPlugin(config) {
                                      });
                                  }
                                  else {
@@ -363,7 +364,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..0d47b56d12881222464ea6ac24c44b43
                                      // Don't include the assets dir if the default asset file names
                                      // are used, the path will be reconstructed by the import preload helper
                                      optimizeModulePreloadRelativePaths
-@@ -65193,7 +65197,7 @@ function onRollupWarning(warning, warn, config) {
+@@ -65193,7 +65191,7 @@ function onRollupWarning(warning, warn, config) {
                  }
              }
              if (warning.plugin === 'rollup-plugin-dynamic-import-variables' &&
