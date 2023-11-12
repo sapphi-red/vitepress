@@ -1,5 +1,5 @@
 diff --git a/dist/node/chunks/dep-pW7U7Lse.js b/dist/node/chunks/dep-pW7U7Lse.js
-index a890c882e84fe91c2989c9a07a38cf104b40eb52..3a855ba436fc01666488e645cb62d4a51dd777d4 100644
+index a890c882e84fe91c2989c9a07a38cf104b40eb52..e129299c7993b7b2d990954cc734bfa3c98b3e27 100644
 --- a/dist/node/chunks/dep-pW7U7Lse.js
 +++ b/dist/node/chunks/dep-pW7U7Lse.js
 @@ -667,7 +667,7 @@ var constants$6 = {
@@ -337,21 +337,23 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..3a855ba436fc01666488e645cb62d4a5
                      // print extra newline to separate the two errors
                      { error: err2 });
                      throw err;
-@@ -61935,9 +61935,10 @@ async function createPluginContainer(config, moduleGraph, watcher) {
+@@ -61935,9 +61935,12 @@ async function createPluginContainer(config, moduleGraph, watcher) {
                      return result;
                  }
              }
 -            watchFiles.add(id);
 -            if (watcher)
 -                ensureWatchedFile(watcher, id, root);
-+            console.log('add', id);
++            if (!path$o.isAbsolute(id)) {
++              console.trace('add', id, path$o.resolve(id));
++            }
 +            // watchFiles.add(id);
 +            // if (watcher)
 +            //     ensureWatchedFile(watcher, id, root);
              return null;
          },
          async transform(code, id, options) {
-@@ -64558,7 +64559,7 @@ function buildImportAnalysisPlugin(config) {
+@@ -64558,7 +64561,7 @@ function buildImportAnalysisPlugin(config) {
                                      });
                                  }
                                  else {
@@ -360,7 +362,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..3a855ba436fc01666488e645cb62d4a5
                                      // Don't include the assets dir if the default asset file names
                                      // are used, the path will be reconstructed by the import preload helper
                                      optimizeModulePreloadRelativePaths
-@@ -65193,7 +65194,7 @@ function onRollupWarning(warning, warn, config) {
+@@ -65193,7 +65196,7 @@ function onRollupWarning(warning, warn, config) {
                  }
              }
              if (warning.plugin === 'rollup-plugin-dynamic-import-variables' &&
