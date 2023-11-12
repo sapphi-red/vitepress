@@ -192,7 +192,7 @@
     "sitemap": "^7.1.1",
     "supports-color": "^9.4.0",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.6",
+    "vitest": "^1.0.0-beta.4",
     "vue-tsc": "^1.8.22",
     "wait-on": "^7.1.0"
   },
