@@ -22,8 +22,9 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        node_version: [18, 20, 21]
+        node_version: [18, 20, 21, 21-nightly]
 
     steps:
       - name: Checkout
