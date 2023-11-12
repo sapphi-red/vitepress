@@ -207,6 +207,9 @@
   "pnpm": {
     "overrides": {
       "ora>string-width": "^5"
+    },
+    "patchedDependencies": {
+      "vite@5.0.0-beta.18": "patches/vite@5.0.0-beta.18.patch"
     }
   }
 }
