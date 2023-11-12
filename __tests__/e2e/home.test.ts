@@ -1,5 +1,4 @@
 describe('render correct content', async () => {
-  return
   beforeAll(async () => {
     await goto('/home')
   })

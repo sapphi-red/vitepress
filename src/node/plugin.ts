@@ -211,6 +211,7 @@ export async function createVitePressPlugin(
           config.publicDir
         )
         allDeadLinks.push(...deadLinks)
+        console.log('includes', includes)
         if (includes.length) {
           includes.forEach((i) => {
             ;(importerMap[slash(i)] ??= new Set()).add(id)
