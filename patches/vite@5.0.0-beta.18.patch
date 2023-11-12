@@ -1,5 +1,5 @@
 diff --git a/dist/node/chunks/dep-pW7U7Lse.js b/dist/node/chunks/dep-pW7U7Lse.js
-index a890c882e84fe91c2989c9a07a38cf104b40eb52..674d9a5b99acbe8304cd35776fc4f514821ea8e6 100644
+index a890c882e84fe91c2989c9a07a38cf104b40eb52..8a31651f96b3c4c0f18a2af3d868702b709ef272 100644
 --- a/dist/node/chunks/dep-pW7U7Lse.js
 +++ b/dist/node/chunks/dep-pW7U7Lse.js
 @@ -667,7 +667,7 @@ var constants$6 = {
@@ -353,16 +353,21 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..674d9a5b99acbe8304cd35776fc4f514
                      // print extra newline to separate the two errors
                      { error: err2 });
                      throw err;
-@@ -61937,7 +61938,7 @@ async function createPluginContainer(config, moduleGraph, watcher) {
+@@ -61936,8 +61937,11 @@ async function createPluginContainer(config, moduleGraph, watcher) {
+                 }
              }
              watchFiles.add(id);
-             if (watcher)
+-            if (watcher)
 -                ensureWatchedFile(watcher, id, root);
-+              ensureWatchedFile(watcher, id, root, true);
++            const skip = Math.random() > 0.8
++            if (!skip)
++              console.log('not skipped!', id)
++              if (watcher)
++                ensureWatchedFile(watcher, id, root, true);
              return null;
          },
          async transform(code, id, options) {
-@@ -64558,7 +64559,7 @@ function buildImportAnalysisPlugin(config) {
+@@ -64558,7 +64562,7 @@ function buildImportAnalysisPlugin(config) {
                                      });
                                  }
                                  else {
@@ -371,7 +376,7 @@ index a890c882e84fe91c2989c9a07a38cf104b40eb52..674d9a5b99acbe8304cd35776fc4f514
                                      // Don't include the assets dir if the default asset file names
                                      // are used, the path will be reconstructed by the import preload helper
                                      optimizeModulePreloadRelativePaths
-@@ -65193,7 +65194,7 @@ function onRollupWarning(warning, warn, config) {
+@@ -65193,7 +65197,7 @@ function onRollupWarning(warning, warn, config) {
                  }
              }
              if (warning.plugin === 'rollup-plugin-dynamic-import-variables' &&
