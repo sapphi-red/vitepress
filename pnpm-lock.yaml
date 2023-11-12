@@ -9,7 +9,7 @@ overrides:
 
 patchedDependencies:
   vite@5.0.0-beta.18:
-    hash: 6tc3qcd57yxjc7tp6qbmx3kdca
+    hash: w6wrjqiufnlkkauea3etnothfq
     path: patches/vite@5.0.0-beta.18.patch
 
 importers:
@@ -51,7 +51,7 @@ importers:
         version: 0.14.5
       vite:
         specifier: 5.0.0-beta.18
-        version: 5.0.0-beta.18(patch_hash=6tc3qcd57yxjc7tp6qbmx3kdca)(@types/node@20.9.0)
+        version: 5.0.0-beta.18(patch_hash=w6wrjqiufnlkkauea3etnothfq)(@types/node@20.9.0)
       vue:
         specifier: ^3.3.8
         version: 3.3.8(typescript@5.2.2)
@@ -1282,7 +1282,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.0.0-beta.18(patch_hash=6tc3qcd57yxjc7tp6qbmx3kdca)(@types/node@20.9.0)
+      vite: 5.0.0-beta.18(patch_hash=w6wrjqiufnlkkauea3etnothfq)(@types/node@20.9.0)
       vue: 3.3.8(typescript@5.2.2)
     dev: false
 
@@ -4423,7 +4423,7 @@ packages:
       mlly: 1.4.2
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 5.0.0-beta.18(patch_hash=6tc3qcd57yxjc7tp6qbmx3kdca)(@types/node@20.9.0)
+      vite: 5.0.0-beta.18(patch_hash=w6wrjqiufnlkkauea3etnothfq)(@types/node@20.9.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4435,7 +4435,7 @@ packages:
       - terser
     dev: true
 
-  /vite@5.0.0-beta.18(patch_hash=6tc3qcd57yxjc7tp6qbmx3kdca)(@types/node@20.9.0):
+  /vite@5.0.0-beta.18(patch_hash=w6wrjqiufnlkkauea3etnothfq)(@types/node@20.9.0):
     resolution: {integrity: sha512-5QAi3LFP+l5NC890ywGe8HeWlmgd7F6d7VA+ZosCSWDr1WZ30YUJjVkwdVcJR+znBCeV0joEiXO6S+Yqp2qsIA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -4523,7 +4523,7 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.7.0
-      vite: 5.0.0-beta.18(patch_hash=6tc3qcd57yxjc7tp6qbmx3kdca)(@types/node@20.9.0)
+      vite: 5.0.0-beta.18(patch_hash=w6wrjqiufnlkkauea3etnothfq)(@types/node@20.9.0)
       vite-node: 0.34.6(@types/node@20.9.0)(supports-color@9.4.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
